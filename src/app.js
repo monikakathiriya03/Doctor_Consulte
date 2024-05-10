@@ -9,6 +9,9 @@ const morgan = require("morgan");
 app.use(express.json());
 app.use(morgan('dev'));
 
+const userRoutes = require('./routes/user.routes');
+app.use('/api/user', userRoutes)
+
 app.listen(port,() => {
     async function main() {
         await mongoose.connect(process.env.MONGO_DB_URL);
